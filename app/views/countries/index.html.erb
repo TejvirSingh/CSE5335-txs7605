@@ -1,0 +1,97 @@
+<html>
+      <head>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+   
+      <style>
+         table, th , td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+         }
+         
+         table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+         }
+         
+         table tr:nth-child(even) {
+            background-color: #ffffff;
+         }
+
+	
+      </style>
+</head>
+ <body>
+ 
+  
+<div ng-app = "countryApp">
+    <div ng-controller="CountryCtrl">
+      <h2>Web Data Management Project 2</h2>
+       <button ng-click="clickButton()"> Give me Data </button> 
+      <table id="tejvir">
+            <tr>
+               <th>S.No.</th>
+               <th>Name</th>
+               <th>Population</th>
+            </tr>
+              <tr ng-repeat="country in countries">
+              <td>{{country.serial}}</td>
+              <td>{{country.name}}</td>
+              <td>{{country.population}}</td>
+            </tr>
+
+
+ 	 </table>   
+  	</div>
+  	</div>
+     
+   
+
+<script>
+  var countryApp = angular.module('countryApp', []);
+      countryApp.controller('CountryCtrl', function ($scope, $http,$interval){
+      	$scope.clickButton = function(){
+      		var data_value = 17
+      		$scope.countries = []
+      		var x = $scope.countries.length
+      		var i = 21	
+      		
+
+      	$interval(function() 
+      	{
+      		if(x <= 19)
+      		{
+
+      		if(i <= 132)
+      		{
+      			$http.get('/countries/hello?data_value='+i).success(  
+            function getdata(data){
+               
+              $scope.countries.push(data);	
+            	 
+            });
+      			x = x + 1
+      		}
+   	
+      		}
+      		else
+      		{
+
+     		}   		
+            i = i + 1
+      		
+      		
+      	}, 500);
+      	
+           	 
+  	    
+      	} 	
+      	  
+     });
+
+
+
+
+</script>
+        
+</body>
+  </html>

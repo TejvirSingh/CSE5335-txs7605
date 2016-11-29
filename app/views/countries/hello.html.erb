@@ -1,0 +1,63 @@
+<html>
+      <head>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+      <style>
+         table, th , td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+         }
+         
+         table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+         }
+         
+         table tr:nth-child(even) {
+            background-color: #ffffff;
+         }
+      </style>
+</head>
+ <body>
+ 
+  
+<div ng-app = "countryApp">
+    <div ng-controller="CountryCtrl">
+      <h2>Web Data Management Project 2</h2>
+       <button ng-click="clickButton()"> Give me Data </button> 
+      <table id="tejvir">
+            <tr>
+               <th>Name</th>
+               <th>Population</th>
+            </tr>
+              <tr ng-repeat="coun in country">
+              <td>{{coun.name}}</td>
+              <td>{{coun.population}}</td>
+            </tr>
+
+
+  </table>   
+  </div>
+  </div>
+     
+   
+
+<script>
+var countryApp = angular.module('countryApp', []);
+      countryApp.controller('CountryCtrl', function ($scope, $http){
+      	$scope.clickButton = function(){
+      		var data_value = 17
+      		$scope.countries = []
+      	  $http.get('/countries/hello?data_value='+data_value).success(  
+            function(data) {
+              $scope.countries = $scope.countries.concat(data);	
+          });
+  	    }
+     });
+
+
+
+
+</script>
+        
+</body>
+  </html>
