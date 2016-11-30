@@ -24,12 +24,9 @@
 development:
   #<<: *default
   adapter: postgresql
-  encoding: unicode
-  database: project_2_development
-  pool: 5
-  username: postgres 
-  password: tejvir
-
+  database: app-dev
+  username: user 
+  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -64,11 +61,9 @@ development:
 test:
   #<<: *default
   adapter: postgresql
-  encoding: unicode
-  database: project_2_test
-  pool: 5
-  username: postgres
-  password: tejvir
+  host: localhost
+  username: hbwmvgjzimewzn
+  database: app-dev
 
 
 # As with config/secrets.yml, you never want to store sensitive information,
