@@ -53,7 +53,7 @@
       		var data_value = 17
       		$scope.countries = []
       		var x = $scope.countries.length
-      		var i = 21	
+      		var i = 1	
       		
 
       	$interval(function() 
@@ -61,7 +61,7 @@
       		if(x <= 19)
       		{
 
-      		if(i <= 132)
+      		if(i <= 112)
       		{
       			$http.get('/countries/hello?data_value='+i).success(  
             function getdata(data){
